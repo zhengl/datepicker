@@ -6,6 +6,7 @@ require.config({
 		'localstorage': 'lib/backbone.localstorage/backbone.localstorage',
 		'underscore': 'lib/underscore/underscore-min',
 		'datepicker': 'lib/bootstrap-datepicker/js/bootstrap-datepicker',
+		'text': 'lib/requirejs-text/text',
 	},
 	shim: {
 		'datepicker': {
@@ -25,5 +26,5 @@ require.config({
 });
 
 require(['jquery','backbone', 'views/AppView'], function($, Backbone, AppView) {
-	new AppView({ el: $('#container').get() });
+	new AppView({ el:'#container' }).render();
 });
