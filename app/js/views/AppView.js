@@ -1,7 +1,7 @@
 define([
 	'backbone', 
-	'views/DateRangePicker', 
-	'views/DatePicker', 
+	'views/DateTimeRangePicker', 
+	'views/DateTimePicker', 
 	'models/HistoryDateTime'], 
 	function(Backbone, DateRangePicker, DatePicker, HistoryDateTime) {
 
@@ -10,6 +10,7 @@ var AppView = Backbone.View.extend({
 	render: function() {
 		var today = new Date();
 		var fiveYearsAgo = new Date(today.getFullYear() - 5, today.getMonth(), today.getDate());
+
 		var startDatePicker = new DatePicker({ 
 			model: new HistoryDateTime({ value: fiveYearsAgo }),
 			lable: 'From',
@@ -18,6 +19,7 @@ var AppView = Backbone.View.extend({
 			model: new HistoryDateTime({ value: today }),
 			lable: 'To',
 		});
+
 		this.$el.append(new DateRangePicker({
 			startDatePicker: startDatePicker, 
 			endDatePicker: endDatePicker

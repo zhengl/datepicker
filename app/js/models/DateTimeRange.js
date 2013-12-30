@@ -11,15 +11,17 @@ var DateTimeRange = Backbone.Model.extend({
 
 	setStartDate: function(startDate) {
 		this.set('startDate', startDate, { validate: true });
+		if(this.isValid()) this.trigger('change');
 	},
 
 	setEndDate: function(endDate) {
 		this.set('endDate', endDate, { validate: true });
+		if(this.isValid()) this.trigger('change');
 	},
 
 	validate: function(attributes) {
 		if(attributes.startDate.get('value') > attributes.endDate.get('value')) {
-			return 'start date should be not later than end date';
+			return 'Start date should be previous to end date';
 		}
 	},
 });
