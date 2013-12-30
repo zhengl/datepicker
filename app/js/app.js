@@ -25,6 +25,8 @@ require.config({
 	}
 });
 
-require(['jquery','backbone', 'views/AppView'], function($, Backbone, AppView) {
-	new AppView({ el:'#container' }).render();
+require(['jquery','backbone', 'routers/DateRangeRouter'], function($, Backbone, DateRangeRouter) {
+	new DateRangeRouter();
+
+	Backbone.history.start();
 });
